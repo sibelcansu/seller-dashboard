@@ -1,69 +1,43 @@
-# React + TypeScript + Vite
+# 🛒 Ürün Ekleme Paneli – React + Supabase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bu proje, kullanıcıların e-posta ve şifreyle kayıt olup giriş yapabileceği, ardından ürünlerini ekleyip görüntüleyebileceği bir **React + Supabase** uygulamasıdır.
 
-Currently, two official plugins are available:
+## 🚀 Özellikler
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ Kullanıcı girişi (login/signup)  
+- ✅ Protected route sistemi ile güvenli sayfa erişimi  
+- ✅ Ürün ekleme (isim, açıklama, fiyat, görsel)  
+- ✅ Supabase Storage'a görsel yükleme  
+- ✅ Supabase veritabanına ürün kaydı  
+- ✅ Ürün listeleme (Dashboard ve /products sayfası)  
+- ✅ Giriş yapılmadan `/add-product` gibi sayfalara erişim engellenir  
+- ✅ Çıkış (logout) butonu ile güvenli oturum sonlandırma
 
-## Expanding the ESLint configuration
+## 🛠️ Kullanılan Teknolojiler
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- ⚛️ React
+- 🔥 Supabase (Auth + Database + Storage)
+- 🎯 React Hook Form
+- 🛣 React Router v6+
+- 🧱 TailwindCSS (isteğe bağlı)
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📁 Proje Yapısı
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+```bash
+src/
+├── components/
+│   └── ProtectedRoute.tsx
+├── features/
+│   ├── auth/
+│   │   ├── Login.tsx
+│   │   └── Signup.tsx
+│   ├── dashboard/
+│   │   └── Dashboard.tsx
+│   └── products/
+│       ├── AddProduct.tsx
+│       └── Products.tsx
+├── routes/
+│   └── AppRouter.tsx
+├── lib/
+│   └── supabaseClient.ts
+└── App.tsx
